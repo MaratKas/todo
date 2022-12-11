@@ -1,9 +1,8 @@
+from deals.models import Task
+from django import forms
 from django.contrib.auth import get_user_model
 from django.test import Client, TestCase
 from django.urls import reverse
-from django import forms
-
-from deals.models import Task
 
 User = get_user_model()
 
@@ -71,7 +70,6 @@ class TaskPagesTests(TestCase):
     def test_task_list_page_list_is_1(self):
         # Удостоверимся, что на страницу со списком заданий передаётся
         # ожидаемое количество объектов
-        
         response = self.authorized_client.get(reverse('deals:task_list'))
         self.assertEqual(response.context['object_list'].count(), 1)
 
